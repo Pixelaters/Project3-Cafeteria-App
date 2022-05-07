@@ -2,7 +2,7 @@
     <string name="app_name">CPUT_CafeteriaApp</string>
     <string name="home_page">Home page</string>
     <string name="todo">TODO</string>
-    <string name="todo">TODO</string>
+    <string name="todo1">TODO1</string>
     <string name="breakfast">Breakfast</string>
     <string name="lunch">Lunch</string>
 </resources>
