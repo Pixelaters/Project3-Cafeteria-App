@@ -14,7 +14,7 @@
 
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/TextView2"
             android:layout_width="93dp"
             android:layout_height="22dp"
             android:text="@string/home_page"
