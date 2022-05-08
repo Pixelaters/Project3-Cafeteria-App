@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CPUT_CafeteriaApp">
         <activity
-            android:name="za.ac.cput_cafeteriaapp.Homepage"
+            android:name=".UpdateAccount"
+            android:exported="false" />
+        <activity
+            android:name=".Homepage"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

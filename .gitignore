@@ -13,3 +13,16 @@
 .externalNativeBuild
 .cxx
 local.properties
+*.lock
+*.bin
+*.class
+*.properties
+*.jar
+*.receipt
+*.module
+*.pom
+*.aar
+*.txt
+*.zip
+*.xml
+*.aidl
