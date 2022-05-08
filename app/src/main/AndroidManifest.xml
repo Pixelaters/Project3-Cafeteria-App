@@ -10,17 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CPUT_CafeteriaApp">
         <activity
-            android:name="za.ac.cput_cafeteriaapp.Homepage"
+            android:name=".DeleteAccount"
+            android:exported="false" />
+        <activity
+            android:name=".UserSettings"
+            android:exported="false" />
+        <activity
+            android:name=".UpdatePassword"
+            android:exported="false" />
+        <activity
+            android:name=".Homepage"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".WelcomePage"
-            android:exported="true"/>
-            <activity
-                android:name=".LoginPage"
-                android:exported="true"/>
+            android:exported="true" />
+        <activity
+            android:name=".LoginPage"
+            android:exported="true" />
         <activity
             android:name=".RegistrationPage"
             android:exported="true">
