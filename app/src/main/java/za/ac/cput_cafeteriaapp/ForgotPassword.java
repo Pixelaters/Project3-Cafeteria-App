@@ -56,10 +56,12 @@ public class ForgotPassword extends AppCompatActivity {
         });
 
         txtBack.setOnClickListener(view -> {
+//            close this activity and return to previous activity
             finish();
         });
 
         txtSignIn.setOnClickListener(view -> {
+//            go to login page
             Intent intent = new Intent(getApplicationContext(), LoginPage.class);
             startActivity(intent);
         });
