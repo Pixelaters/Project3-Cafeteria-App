@@ -28,7 +28,7 @@ public class WelcomePage extends AppCompatActivity {
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WelcomePage.this,RegistrationPage.class);
+                Intent intent = new Intent(WelcomePage.this, RegistrationPage.class);
                 startActivity(intent);
             }
         });
@@ -36,14 +36,14 @@ public class WelcomePage extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent login = new Intent(WelcomePage.this,LoginPage.class);
-                        startActivity(login);
+                Intent login = new Intent(WelcomePage.this, LoginPage.class);
+                startActivity(login);
             }
         });
 
         txtForgotPassword.setOnClickListener(view -> {
-            Intent forgotPassword = new Intent(WelcomePage.this,ForgotPassword.class);
-                    startActivity(forgotPassword);
+            Intent forgotPassword = new Intent(getApplicationContext(), ForgotPassword.class);
+            startActivity(forgotPassword);
         });
     }
 }

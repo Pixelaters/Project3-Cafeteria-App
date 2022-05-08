@@ -6,4 +6,10 @@
     <string name="breakfast">Breakfast</string>
     <string name="lunch">Lunch</string>
     <string name="forgot_password_underlined"><u>Forgot Password?</u></string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">New Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="back_underlined"><u>Back</u></string>
+    <string name="sign_in_underlined"><u>Sign in</u></string>
 </resources>
