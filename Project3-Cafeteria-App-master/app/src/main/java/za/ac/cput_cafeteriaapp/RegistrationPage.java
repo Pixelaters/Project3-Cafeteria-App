@@ -46,7 +46,7 @@ public class RegistrationPage extends AppCompatActivity {
             }
         });
 
-        cbRegPw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*cbRegPw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
@@ -68,7 +68,7 @@ public class RegistrationPage extends AppCompatActivity {
                    regCnfrmPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 }
             }
-        });
+        });*/
 
     }
 }
