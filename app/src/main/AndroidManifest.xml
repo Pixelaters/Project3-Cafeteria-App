@@ -13,6 +13,12 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
+            android:name=".Orderspage"
+            android:exported="false" />
+        <activity
+            android:name=".UserSettings"
+            android:exported="false" />
+        <activity
             android:name=".Homepage"
             android:exported="true" />
         <activity
