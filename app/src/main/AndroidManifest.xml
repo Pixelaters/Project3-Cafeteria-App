@@ -13,6 +13,21 @@
             android:name=".OrderTakeAway"
             android:exported="false" />
         <activity
+            android:name=".UpdatePassword"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteAccount"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".OrdersPage"
+            android:exported="false" />
+        <activity
+            android:name=".UserSettings"
+            android:exported="false" />
+        <activity
             android:name=".Homepage"
             android:exported="true" />
         <activity

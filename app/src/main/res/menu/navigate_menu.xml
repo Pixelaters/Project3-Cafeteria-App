@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navHome"
+        android:title="Home"
+        android:textColor="@color/purple_700"/>
+    <item
+        android:id="@+id/navAccount"
+        android:title="Account"
+        />
+
+    <item
+        android:id="@+id/navDeals"
+        android:title="Breakfast Meals"
+        />
+    <item
+        android:id="@+id/navTakeaway"
+        android:title="Takeaway"
+        />
+
+
+</menu>
