@@ -10,20 +10,20 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class RegistrationDB extends SQLiteOpenHelper {
     //set up the "Registration" database + table, attributes
-    private static final String DB_NAME = "cafeteriaDB.db";
+    public static final String DB_NAME = "cafeteriaDB.db";
 
-    private static final String TABLE_1_NAME = "registration";
-    private static final String USER_NAME = "user_name";
-    private static final String EMAIL = "email_address";
-    private static final String PASSWORD = "password";
-    private static final String CONFIRMED_PASSWORD = "confirm_password";
+    public static final String TABLE_1_NAME = "registration";
+    public static final String USER_NAME = "user_name";
+    public static final String EMAIL = "email_address";
+    public static final String PASSWORD = "password";
+    public static final String CONFIRMED_PASSWORD = "confirm_password";
 
-    private static final String TABLE_2_NAME = "customer_order";
-    private static final String MEAL_CODE = "code";
-    private static final String EMAIL_ADDRESS = "email_address";//Foreign key
-    private static final String MEAL_NAME = "meal_name";
-    private static final String MEAL_DESCRIPTION = "description";
-    private static final String MEAL_PRICE = "price";
+    public static final String TABLE_2_NAME = "customer_order";
+    public static final String MEAL_CODE = "code";
+    public static final String EMAIL_ADDRESS = "email_address";//Foreign key
+    public static final String MEAL_NAME = "meal_name";
+    public static final String MEAL_DESCRIPTION = "description";
+    public static final String MEAL_PRICE = "price";
 
 public RegistrationDB(Context context){
     super(context,DB_NAME,null,1);
@@ -32,9 +32,9 @@ public RegistrationDB(Context context){
 // create database table
     @Override
     public void onCreate(SQLiteDatabase db) {
-    db.execSQL("CREATE TABLE " + TABLE_1_NAME + " (user_name TEXT, email_address TEXT PRIMARY KEY, password TEXT, confirm_password)");
-    db.execSQL("CREATE TABLE " + TABLE_2_NAME + " (code INTEGER PRIMARY KEY AUTOINCREMENT, meal_name TEXT, description TEXT, price TEXT, FOREIGN KEY('email_address') REFERENCES " +
-            TABLE_1_NAME + "('id'))");
+    db.execSQL("CREATE TABLE " + TABLE_1_NAME + " (user_name TEXT, email_address TEXT PRIMARY KEY, password TEXT, confirm_password TEXT)");
+    db.execSQL("CREATE TABLE " + TABLE_2_NAME + " (code INTEGER PRIMARY KEY AUTOINCREMENT, user_email TEXT, meal_name TEXT, description TEXT, price TEXT, FOREIGN KEY('user_email') REFERENCES " +
+            TABLE_1_NAME + "('email_address'))");
 
     }
 
