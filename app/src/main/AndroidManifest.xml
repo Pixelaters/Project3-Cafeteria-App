@@ -28,13 +28,13 @@
             android:name=".UserSettings"
             android:exported="false" />
         <activity
-            android:name=".WelcomePage"
+            android:name=".Homepage"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".Homepage"
+            android:name=".WelcomePage"
             android:exported="true" >
                   <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
