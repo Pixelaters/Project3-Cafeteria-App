@@ -102,6 +102,9 @@ public class RegistrationPage extends AppCompatActivity {
                 }else if(emailCursor.getCount() > 0){
                     Toast.makeText(RegistrationPage.this,"Email already exists",Toast.LENGTH_LONG).show();
 
+                }else if(!password.equals(confirmedPassword)){
+                    regCnfrmPassword.setError("Password does not match. Retype password");
+
                 }else if(USERNAME_PATTERN.matcher(username).matches() && EMAIL_PATTERN.matcher(password).matches() &&
                         PASSWORD_PATTERN.matcher(password).matches() && PASSWORD_PATTERN.matcher(confirmedPassword).matches()) {
                     insertData(username,email,password,confirmedPassword);
@@ -170,6 +173,7 @@ public class RegistrationPage extends AppCompatActivity {
     public void login(){
         Intent loginPage = new Intent(this, LoginPage.class);
         startActivity(loginPage);
+        finish();
 
         }
     }
