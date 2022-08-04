@@ -51,6 +51,10 @@ public class ForgotPassword extends AppCompatActivity {
             progressDialog.setMessage("Changing password...");
             showDialog();
             // TODO code for changing password
+
+//            temporarily link to forgot order take away
+            Intent orderTakeAway = new Intent(getApplicationContext(), OrderTakeAway.class);
+            startActivity(orderTakeAway);
             hideDialog();
 
         });
