@@ -19,7 +19,7 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".Orderspage"
+            android:name=".OrdersPage"
             android:exported="false" />
         <activity
             android:name=".UserSettings"
