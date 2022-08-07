@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/cput_logo" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/registerBtn"
         android:layout_width="137dp"
         android:layout_height="57dp"
         android:background="@color/teal_700"
@@ -50,6 +50,7 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textCapWords"
+        android:maxLength="9"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,6 +81,7 @@
         android:gravity="start|top"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:maxLength="22"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
@@ -109,6 +111,7 @@
         android:gravity="start|top"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:maxLength="15"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
@@ -138,6 +141,7 @@
         android:gravity="start|top"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:maxLength="15"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
@@ -154,23 +158,23 @@
         android:textColor="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.942" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="104dp"
-        android:layout_height="51dp"
-        android:text="Sign_in"
+        android:layout_width="53dp"
+        android:layout_height="21dp"
+        android:text="Sign In"
         android:textColor="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.993"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.986" />
+        app:layout_constraintVertical_bias="0.942" />
 
     <TextView
         android:id="@+id/textView7"
