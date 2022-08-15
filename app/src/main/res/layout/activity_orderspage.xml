@@ -6,88 +6,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Orderspage"
+    tools:context=".OrdersPage"
     tools:ignore="HardcodedText">
 
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:layout_marginHorizontal="@dimen/cardview_default_elevation">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/cardview_default_elevation"
+        android:background="@color/white">
 
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="75dp"
-            android:layout_marginBottom="50dp"
-            android:backgroundTint="@color/purple_700"
-            android:text="Submit your order"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="138dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="113dp"
-            android:backgroundTint="@color/purple_700"
-            android:text="Orders"
-            android:textColor="@color/white" />
-
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="147dp"
-            android:layout_marginBottom="256dp"
-            android:text="Description"
-            android:textColor="#0B0EFB"
-            android:textSize="25dp" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="112dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="74dp"
-            android:layout_marginBottom="183dp"
-            android:text="Price  "
-            android:textColor="#0629EA"
-            android:textSize="25dp" />
-
-        <TextView
-            android:id="@+id/mealText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="143dp"
-            android:layout_marginEnd="120dp"
-            android:text="Meal name"
-            android:textColor="#0629EA"
-            android:textSize="25dp" />
 
         <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="135dp"
-            android:layout_height="82dp"
-            android:layout_alignParentStart="true"
+            android:id="@+id/imageAcc"
+            android:layout_width="56dp"
+            android:layout_height="58dp"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="114dp"
-            android:layout_marginTop="279dp"
-            app:srcCompat="@mipmap/ic_food" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            app:srcCompat="@drawable/contact" />
 
+        <ImageView
+            android:id="@+id/imageMeal"
+            android:layout_width="119dp"
+            android:layout_height="143dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="false"
+            android:layout_centerInParent="false"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="208dp"
+            android:layout_marginEnd="164dp"
+            app:srcCompat="@drawable/fast_food" />
+
+        <TextView
+            android:id="@+id/textMealname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="151dp"
+            android:layout_marginTop="153dp"
+            android:text="Meal Name"
+            android:textColor="#3F51B5"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textDescript"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="187dp"
+            android:layout_marginBottom="238dp"
+            android:text="Description of meal"
+            android:textColor="#3F51B5"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="212dp"
+            android:layout_marginBottom="173dp"
+            android:text="Price"
+            android:textColor="#3F51B5"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/buttCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="156dp"
+            android:layout_marginBottom="70dp"
+            android:backgroundTint="#3F51B5"
+            android:text="CHECKOUT"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textOrderspage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="false"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="194dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Orders Page"
+            android:textColor="#3949AB"
+            android:textSize="20dp" />
 
     </RelativeLayout>
 
@@ -95,7 +112,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/purple_700"
+        android:background="#3949AB"
+        app:insetForeground="@color/purple_500"
+        app:itemIconTint="#3949AB"
+        app:itemShapeFillColor="#3949AB"
         app:menu="@menu/navigate_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
