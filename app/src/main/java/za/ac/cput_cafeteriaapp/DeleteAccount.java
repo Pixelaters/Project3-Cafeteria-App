@@ -3,13 +3,23 @@ package za.ac.cput_cafeteriaapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import za.ac.cput_cafeteriaapp.DatabaseHelper.RegistrationDB;
+
 public class DeleteAccount extends AppCompatActivity {
-    private TextView txtLinkDelete;
-    private TextView txtLinkCancel;
+    private Button btnDeleteAccount;
+    private Button btnCancel;
+    SQLiteDatabase db;
+    SQLiteOpenHelper openHelper;
+    Cursor cursor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,24 +27,11 @@ public class DeleteAccount extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_account);
+        openHelper = new RegistrationDB(this);
+        db = openHelper.getReadableDatabase();
 
-        txtLinkDelete = findViewById(R.id.finalDelete);
-        txtLinkCancel = findViewById(R.id.cancelDeletion);
+        btnDeleteAccount = findViewById(R.id.finalDelete);
+        btnCancel = findViewById(R.id.cancelDeletion);
 
-        txtLinkDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent delete = new Intent(DeleteAccount.this,LoginPage.class);
-                startActivity(delete);
-            }
-        });
-
-        txtLinkCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cancel = new Intent(DeleteAccount.this,UserSettings.class);
-                startActivity(cancel);
-            }
-        });
     }
 }
