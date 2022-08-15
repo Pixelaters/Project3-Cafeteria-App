@@ -105,7 +105,7 @@ public class RegistrationPage extends AppCompatActivity {
                 }else if(!password.equals(confirmedPassword)){
                     regCnfrmPassword.setError("Password does not match. Retype password");
 
-                }else if(USERNAME_PATTERN.matcher(username).matches() && EMAIL_PATTERN.matcher(password).matches() &&
+                }else if(USERNAME_PATTERN.matcher(username).matches() && EMAIL_PATTERN.matcher(email).matches() &&
                         PASSWORD_PATTERN.matcher(password).matches() && PASSWORD_PATTERN.matcher(confirmedPassword).matches()) {
                     insertData(username,email,password,confirmedPassword);
                     Toast.makeText(RegistrationPage.this, "Registration success", Toast.LENGTH_LONG).show();
