@@ -1,4 +1,4 @@
-package za.ac.cput_cafeteriaapp;
+package za.ac.cput_cafeteriaapp.views.nonCart;
 /*
     Breyton Ernstzen (217203027)
  */
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import za.ac.cput_cafeteriaapp.R;
 
 public class WelcomePage extends AppCompatActivity {
     private Button btnCreateAccount;

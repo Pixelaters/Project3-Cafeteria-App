@@ -1,4 +1,4 @@
-package za.ac.cput_cafeteriaapp;
+package za.ac.cput_cafeteriaapp.views.nonCart;
 //RateUs Page.
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import za.ac.cput_cafeteriaapp.R;
 
 public class RateUsPage extends AppCompatActivity implements View.OnClickListener{
 

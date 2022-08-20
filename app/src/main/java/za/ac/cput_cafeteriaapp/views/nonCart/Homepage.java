@@ -1,10 +1,12 @@
-package za.ac.cput_cafeteriaapp;
+package za.ac.cput_cafeteriaapp.views.nonCart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import za.ac.cput_cafeteriaapp.R;
 
 public class Homepage extends AppCompatActivity {
     //comment to explain
