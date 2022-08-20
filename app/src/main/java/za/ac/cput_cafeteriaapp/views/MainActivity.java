@@ -23,6 +23,7 @@ import za.ac.cput_cafeteriaapp.models.CartItem;
 import za.ac.cput_cafeteriaapp.viewmodels.ShopViewModel;
 import za.ac.cput_cafeteriaapp.views.nonCart.Homepage;
 
+//VIDEO ENDED AT EP 12 MID WAY
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
