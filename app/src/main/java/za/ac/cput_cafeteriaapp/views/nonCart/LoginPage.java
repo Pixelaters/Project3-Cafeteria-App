@@ -1,4 +1,4 @@
-package za.ac.cput_cafeteriaapp;
+package za.ac.cput_cafeteriaapp.views.nonCart;
 /*
     Breyton Ernstzen (217203027)
  */
@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import za.ac.cput_cafeteriaapp.DatabaseHelper.RegistrationDB;
+import za.ac.cput_cafeteriaapp.R;
 
 public class LoginPage extends AppCompatActivity {
     SQLiteDatabase db;
@@ -74,7 +75,7 @@ public class LoginPage extends AppCompatActivity {
         txtLinkBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent previous = new Intent(LoginPage.this,WelcomePage.class);
+                Intent previous = new Intent(LoginPage.this, WelcomePage.class);
                 startActivity(previous);
             }
         });

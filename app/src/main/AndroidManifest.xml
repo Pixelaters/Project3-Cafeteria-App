@@ -2,39 +2,38 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="za.ac.cput_cafeteriaapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CPUT_CafeteriaApp">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         <activity
-            android:name=".OrderTakeAway"
+            android:name=".views.nonCart.OrderTakeAway"
             android:exported="false" />
         <activity
-            android:name=".UpdatePassword"
+            android:name=".views.nonCart.UpdatePassword"
             android:exported="false" />
         <activity
-            android:name=".DeleteAccount"
+            android:name=".views.nonCart.DeleteAccount"
             android:exported="false" />
         <activity
-            android:name=".ForgotPassword"
+            android:name=".views.nonCart.ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".OrdersPage"
+            android:name=".views.nonCart.UserSettings"
             android:exported="false" />
         <activity
-            android:name=".UserSettings"
-            android:exported="false" />
-        <activity
-            android:name=".Homepage"
+            android:name=".views.nonCart.Homepage"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".views.nonCart.WelcomePage"
             android:exported="true" />
         <activity
-            android:name=".WelcomePage"
+            android:name=".views.MainActivity"
             android:exported="true" >
                   <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,10 +42,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginPage"
+            android:name=".views.nonCart.LoginPage"
             android:exported="true" />
         <activity
-            android:name=".RegistrationPage"
+            android:name=".views.nonCart.RegistrationPage"
             android:exported="true"/>
     </application>
 
