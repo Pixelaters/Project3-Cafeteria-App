@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.ShopFragment">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView20"-->
+<!--        android:layout_width="411dp"-->
+<!--        android:layout_height="136dp"-->
+<!--        android:layout_marginTop="52dp"-->
+<!--        android:contentDescription="@string/todo"-->
+<!--        android:scaleType="fitXY"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.333"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView14"-->
+<!--        app:srcCompat="@drawable/homepagemeal" />-->
+
+<!--    <Space-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="100dp"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shopRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        tools:listitem="@layout/shop_row" />
+    <!--    span count is the amount of columns that you will be displaying-->
+</FrameLayout>
