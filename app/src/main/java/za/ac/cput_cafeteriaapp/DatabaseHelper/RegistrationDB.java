@@ -4,7 +4,9 @@
  */
 package za.ac.cput_cafeteriaapp.DatabaseHelper;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -46,4 +48,48 @@ public RegistrationDB(Context context){
     onCreate(db);
 
     }
+
+
+    public Boolean updateuser(String username, String email, String password){
+    SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("user_name",username);
+        contentValues.put("email_address",email);
+        contentValues.put("password",password);
+
+        Cursor cursor = DB.rawQuery("Select * from " + TABLE_1_NAME + " where email_address=?", new String[]{email}  );
+        if (cursor.getCount()>0){
+
+            long resu = DB.update(TABLE_1_NAME,contentValues,"email_address=?", new String[]{email});
+            if (resu == -1){
+                return false;
+            }else{
+                return  true;
+            }
+        }else{
+            return false;
+        }
+    }
+
+
+    public Boolean deletedata(String user_name, String password){
+    SQLiteDatabase DB = this.getWritableDatabase();
+
+    Cursor cursor = DB.rawQuery("Select * from RegistrationDB where email=? and username = ?", new String[]{user_name,password});
+    if (cursor.getCount()>0)
+    {
+        long result = DB.delete("RegistrationDB","username=?" + "password=?",new String[]{user_name,password});
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }else{
+        return false;
+    }
+
+    }
+
+
 }
