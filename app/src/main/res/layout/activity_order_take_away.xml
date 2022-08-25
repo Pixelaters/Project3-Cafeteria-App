@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ecebe6"
-    tools:context=".OrderTakeAway">
+    tools:context=".views.nonCart.OrderTakeAway">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,20 +16,23 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:background="@color/purple_700"
             android:orientation="vertical">
 
             <ImageView
+                android:layout_height="400dp"
                 android:id="@+id/foodPic"
                 android:layout_width="match_parent"
-                android:layout_height="461dp"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/image_bg"
                 android:layout_marginHorizontal="24dp"
                 app:srcCompat="@drawable/burger_large" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="293dp"
                 android:background="@drawable/background_white"
                 android:orientation="vertical">
 
@@ -49,7 +52,8 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="8dp"
-                    android:background="@drawable/grey_bar">
+                    android:background="@drawable/grey_bar"
+                    android:elevation="5dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout3"
@@ -143,9 +147,19 @@
                     android:textColor="#686868"
                     android:textSize="20sp" />
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@color/purple_700"
+
+                    />
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="112dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -163,7 +177,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
                             android:text="Total Price"
-                            android:textColor="#373b54"
+                            android:textColor="@color/black"
                             android:textSize="15sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -174,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:text="R19.50"
-                            android:textColor="#000000"
+                            android:textColor="@color/purple_700"
                             android:textSize="23sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
@@ -195,7 +209,7 @@
                         android:padding="8dp"
                         android:text="Add to Cart"
                         android:textColor="#ffffff"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>

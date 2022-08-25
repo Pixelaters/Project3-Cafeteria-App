@@ -1,4 +1,4 @@
-package za.ac.cput_cafeteriaapp;
+package za.ac.cput_cafeteriaapp.views.nonCart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import za.ac.cput_cafeteriaapp.R;
 
 public class DeleteAccount extends AppCompatActivity {
     private TextView txtLinkDelete;
@@ -32,7 +34,7 @@ public class DeleteAccount extends AppCompatActivity {
         txtLinkCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cancel = new Intent(DeleteAccount.this,UserSettings.class);
+                Intent cancel = new Intent(DeleteAccount.this, UserSettings.class);
                 startActivity(cancel);
             }
         });

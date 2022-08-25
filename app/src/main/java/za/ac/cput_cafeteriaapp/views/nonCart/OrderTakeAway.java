@@ -1,4 +1,4 @@
-package za.ac.cput_cafeteriaapp;
+package za.ac.cput_cafeteriaapp.views.nonCart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import za.ac.cput_cafeteriaapp.R;
 
 public class OrderTakeAway extends AppCompatActivity {
     private ProgressDialog progressDialog;

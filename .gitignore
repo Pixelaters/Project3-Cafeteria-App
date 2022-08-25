@@ -29,3 +29,4 @@ local.properties
 *.aidl
 *.dll
 gradle/wrapper/daemon/7.2/daemon-8628.out.log
+.idea/gradle.xml

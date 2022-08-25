@@ -1,9 +1,8 @@
-package za.ac.cput_cafeteriaapp;
+package za.ac.cput_cafeteriaapp.views.nonCart;
 /*
     Breyton Ernstzen (217203027)
  */
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -25,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.regex.Pattern;
 
 import za.ac.cput_cafeteriaapp.DatabaseHelper.RegistrationDB;
+import za.ac.cput_cafeteriaapp.R;
 
 public class RegistrationPage extends AppCompatActivity {
     SQLiteOpenHelper db_OpenHelper;
@@ -105,7 +105,7 @@ public class RegistrationPage extends AppCompatActivity {
                 }else if(!password.equals(confirmedPassword)){
                     regCnfrmPassword.setError("Password does not match. Retype password");
 
-                }else if(USERNAME_PATTERN.matcher(username).matches() && EMAIL_PATTERN.matcher(password).matches() &&
+                }else if(USERNAME_PATTERN.matcher(username).matches() && EMAIL_PATTERN.matcher(email).matches() &&
                         PASSWORD_PATTERN.matcher(password).matches() && PASSWORD_PATTERN.matcher(confirmedPassword).matches()) {
                     insertData(username,email,password,confirmedPassword);
                     Toast.makeText(RegistrationPage.this, "Registration success", Toast.LENGTH_LONG).show();
