@@ -51,7 +51,7 @@
                 android:id="@+id/priceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(shopViewModel.product.price) + `$` }"
+                android:text="@{`R`+ String.valueOf(shopViewModel.product.price)  }"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
             <Space
@@ -88,13 +88,14 @@
 
             <Button
                 android:id="@+id/addToCartButton"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="@{shopViewModel.product.available}"
                 android:text="Add to cart"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                 android:onClick="@{() -> shopViewModel.addItemToCart(shopViewModel.product)}"
+
                 />
         </LinearLayout>
 

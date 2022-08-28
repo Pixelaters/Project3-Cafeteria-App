@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,6 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         fragmentShopBinding = FragmentShopBinding.inflate(inflater, container, false);
         return fragmentShopBinding.getRoot();
     }
@@ -74,7 +74,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     public void addItem(Product product) {
         boolean isAdded =shopViewModel.addItemToCart(product);
         if (isAdded) {
-            Snackbar.make(requireView(), product.getName() + "added to cart.", Snackbar.LENGTH_LONG)
+            Snackbar.make(requireView(), product.getName() + " added to cart.", Snackbar.LENGTH_LONG)
                     .setAction("Checkout", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -93,6 +93,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     public void onItemClick(Product product) {
         shopViewModel.setProduct(product);
         navController.navigate(R.id.action_shopFragment_to_productDetailFragment);
+        Log.d(TAG, "onItemClick" + product.toString());
 
     }
 }
