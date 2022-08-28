@@ -1,5 +1,5 @@
 package za.ac.cput_cafeteriaapp;
-
+// comment
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
