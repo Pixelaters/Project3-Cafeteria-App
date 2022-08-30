@@ -1,6 +1,10 @@
 package za.ac.cput_cafeteriaapp.views;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,21 +13,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import java.util.List;
 
-import za.ac.cput_cafeteriaapp.R;
 import za.ac.cput_cafeteriaapp.adapters.CartListAdapter;
 import za.ac.cput_cafeteriaapp.databinding.FragmentCartBinding;
 import za.ac.cput_cafeteriaapp.models.CartItem;
 import za.ac.cput_cafeteriaapp.viewmodels.ShopViewModel;
+import za.ac.cput_cafeteriaapp.views.nonCart.CheckoutPage;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CartFragment#newInstance} factory method to
+ * Use the {@link CartFragment #newInstance} factory method to
  * create an instance of this fragment.
  */
 public class CartFragment extends Fragment implements CartListAdapter.CartInterface {
@@ -31,6 +31,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     private static final String TAG = "CartFragment";
     ShopViewModel shopViewModel;
     FragmentCartBinding fragmentCartBinding;
+    Double totalPrice;
 
     public CartFragment() {
         // Required empty public constructor
@@ -48,6 +49,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         CartListAdapter cartListAdapter = new CartListAdapter(this);
 
         fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
@@ -63,7 +65,17 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
         shopViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
+                totalPrice = aDouble;
                 fragmentCartBinding.orderTotalTextView.setText("Total: R" + aDouble.toString());
+            }
+        });
+        fragmentCartBinding.placeOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), CheckoutPage.class);
+                intent.putExtra("amount", String.format("%.2f", totalPrice));
+                startActivity(intent);
             }
         });
     }
