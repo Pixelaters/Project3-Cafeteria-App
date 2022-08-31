@@ -18,20 +18,23 @@ import za.ac.cput_cafeteriaapp.DatabaseHelper.RegistrationDB;
 import za.ac.cput_cafeteriaapp.R;
 
 public class DeleteAccount extends AppCompatActivity {
-    EditText email,password;
-    Button btnVal;
+    private EditText email,password;
+    private Button btnVal;
+    private Button btnNah;
+
     SQLiteDatabase db;
     SQLiteOpenHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_validation);
+        setContentView(R.layout.activity_delete_account);
 
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.Password);
+        email = findViewById(R.id.Eman);
+        password = findViewById(R.id.oGPass);
 
-        btnVal = findViewById(R.id.btnValDelete);
+        btnVal = findViewById(R.id.btnBye);
+        btnNah = findViewById(R.id.btnNope);
         helper = new RegistrationDB(this);
         db = helper.getWritableDatabase();
 
@@ -55,6 +58,14 @@ public class DeleteAccount extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        btnNah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent no = new Intent(DeleteAccount.this, UserSettings.class);
+                startActivity(no);
             }
         });
     }
