@@ -37,7 +37,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/titleTxt"
+                    android:id="@+id/orderNameTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -139,7 +139,7 @@
 
 
                 <TextView
-                    android:id="@+id/descriptionTxt"
+                    android:id="@+id/availabilityTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"

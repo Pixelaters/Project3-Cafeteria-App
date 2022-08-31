@@ -1,5 +1,6 @@
 package za.ac.cput_cafeteriaapp.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import za.ac.cput_cafeteriaapp.adapters.ShopListAdapter;
 import za.ac.cput_cafeteriaapp.databinding.FragmentShopBinding;
 import za.ac.cput_cafeteriaapp.models.Product;
 import za.ac.cput_cafeteriaapp.viewmodels.ShopViewModel;
+import za.ac.cput_cafeteriaapp.views.nonCart.OrderTakeAway;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,10 +35,10 @@ import za.ac.cput_cafeteriaapp.viewmodels.ShopViewModel;
  */
 public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterface{
 
+        public static ShopViewModel shopViewModel;
     private static final String TAG = "ShopFragment";
     FragmentShopBinding fragmentShopBinding;
     private ShopListAdapter shopListAdapter;
-    private ShopViewModel shopViewModel;
     private NavController navController;
 
     public ShopFragment() {
@@ -91,8 +93,11 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
 
     @Override
     public void onItemClick(Product product) {
+
+        Intent intent = new Intent(getActivity(), OrderTakeAway.class);
+        startActivity(intent);
         shopViewModel.setProduct(product);
-        navController.navigate(R.id.action_shopFragment_to_productDetailFragment);
+//        navController.navigate(R.id.action_shopFragment_to_productDetailFragment);
         Log.d(TAG, "onItemClick" + product.toString());
 
     }
