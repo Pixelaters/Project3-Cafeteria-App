@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import za.ac.cput_cafeteriaapp.R;
 
-public class UpdatePassword extends AppCompatActivity {
+public class UpdatePass extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_password);
+        setContentView(R.layout.activity_update_pass);
     }
 }

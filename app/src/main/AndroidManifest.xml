@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="za.ac.cput_cafeteriaapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,9 +13,6 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         <activity
             android:name=".views.nonCart.OrderTakeAway"
-            android:exported="false" />
-        <activity
-            android:name=".views.nonCart.UpdatePassword"
             android:exported="false" />
         <activity
             android:name=".views.nonCart.DeleteAccount"
@@ -34,7 +31,7 @@
             android:exported="true" />
         <activity
             android:name=".views.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,7 +43,7 @@
             android:exported="true" />
         <activity
             android:name=".views.nonCart.RegistrationPage"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
