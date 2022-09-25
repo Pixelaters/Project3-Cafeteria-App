@@ -51,4 +51,12 @@ public class ShopViewModel extends ViewModel {
     public LiveData<Double> getTotalPrice(){
         return cartRepo.getTotalPrice();
     }
+
+    public List listCartItems(){
+        return cartRepo.listCartItems();
+    }
+
+    public void resetCart(){
+        cartRepo.initCart();
+    }
 }

@@ -33,7 +33,7 @@
         <activity
             android:name=".views.nonCart.WelcomePage"
             android:exported="true" />
-<!--        .views.MainActivity-->
+<!--        .views.MainActivity .views.nonCart.LoginPage-->
         <activity
             android:name=".views.nonCart.LoginPage"
             android:exported="true" >
