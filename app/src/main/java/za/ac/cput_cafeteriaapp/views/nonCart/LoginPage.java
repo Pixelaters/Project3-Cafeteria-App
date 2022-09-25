@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -35,12 +36,14 @@ import za.ac.cput_cafeteriaapp.R;
 import za.ac.cput_cafeteriaapp.views.MainActivity;
 
 public class LoginPage extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "Login page";
     private TextView makeAccount, forgotPassword;
     private EditText editTextEmail, editTextpassword;
     private Button signIn;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    public static FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -114,7 +117,7 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     //redirect to user profile
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                     user = FirebaseAuth.getInstance().getCurrentUser();
                     if (user.isEmailVerified()){
                         progressBar.setVisibility(View.GONE);
                         startActivity(new Intent(LoginPage.this, MainActivity.class));
