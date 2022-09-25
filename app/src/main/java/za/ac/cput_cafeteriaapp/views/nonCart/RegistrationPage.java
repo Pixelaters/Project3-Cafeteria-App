@@ -30,6 +30,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 import za.ac.cput_cafeteriaapp.DatabaseHelper.RegistrationDB;
@@ -41,11 +42,26 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
     private TextView register, goBack2;
     private EditText regUserName, regEmail, regPassword, regConfirmPW;
     private ProgressBar progressBar;
+    private CheckBox passwordCb, cnfrmPwCb;
+
+
+
+    public static final Pattern PASSWORD_PATTERN = Pattern.compile("^" +
+            "(?=.*[0-9])" +             //The pw requires at least one digit
+            "(?=.*[a-z])" +             //The pw requires at least one small letter
+            "(?=.*[A-Z])" +             //The pw requires at least one capital letter
+            "(?=.*[@#$%^&+=!_])" +        //The pw requires at least one special character
+            "(?=\\S+$)" +               //No white spaces allowed
+            ".{8,15}" +                   //The password requires at least 8 characters
+            "$");
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_page);
+
+        passwordCb = findViewById(R.id.regpw);
+        cnfrmPwCb = findViewById(R.id.regconfrmpw);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -61,6 +77,26 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
         regConfirmPW= (EditText) findViewById(R.id.regConfirmPW);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+
+        passwordCb.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+
+            if(isChecked){
+                regPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+            }else{
+                regPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+        });
+
+        cnfrmPwCb.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+
+            if(isChecked){
+                regConfirmPW.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+            }else{
+                regConfirmPW.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+        });
     }
 
     @Override
@@ -80,6 +116,24 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
         String email = regEmail.getText().toString().trim();
         String password = regPassword.getText().toString().trim();
         String confirmPassword = regConfirmPW.getText().toString().trim();
+
+//        if(username.isEmpty()||email.isEmpty()||password.isEmpty()||confirmPassword.isEmpty()) {
+//            Toast.makeText(RegistrationPage.this, "Please complete all fields", Toast.LENGTH_LONG).show();
+//
+//        }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+//            regEmail.setError("Please provide a valid email");
+//
+//        }else if(!PASSWORD_PATTERN.matcher(password).matches()){
+//            regPassword.setError("Password must be at least 8 characters. Requires at least one digit, " +
+//                    "one lowercase letter, one uppercase, and one special character");
+//
+//        }else if(!PASSWORD_PATTERN.matcher(confirmPassword).matches()){
+//            regConfirmPW.setError("Password must be at least 8 characters. Requires at least one digit, " +
+//                    "one lowercase letter, one uppercase, and one special character");
+//
+//        }else if(!password.equals(confirmPassword)){
+//            regConfirmPW.setError("Password does not match with initial password");
+//        }
 
         if (username.isEmpty()){
             regUserName.setError("Username is required");
@@ -104,26 +158,34 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
             return;
         }
 
+        if (confirmPassword.isEmpty()) {
+            regConfirmPW.setError("Confirm password is required");
+            regConfirmPW.requestFocus();
+            return;
+        }
+
         if (password.length()< 6){
             regPassword.setError("Min password length should be 6 characters!");
             regPassword.requestFocus();
             return;
         }
 
+        if(!password.equals(confirmPassword)){
+            regConfirmPW.setError("Password does not match with initial password");
+            regConfirmPW.requestFocus();
+            return;
+        }
+
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                User user = new User(username,email);
+                .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()){
+                            final User user = new User(username,email);
 
-                                FirebaseDatabase.getInstance("https://project-3-cafeteria-app-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users")
-                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
+                           FirebaseDatabase.getInstance("https://project-3-cafeteria-app-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user).addOnCompleteListener(task1 -> {
+                                        if (task1.isSuccessful()){
                                             Toast.makeText(RegistrationPage.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
                                             progressBar.setVisibility(View.GONE);
 
@@ -132,13 +194,11 @@ public class RegistrationPage extends AppCompatActivity implements View.OnClickL
                                             Toast.makeText(RegistrationPage.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
                                             progressBar.setVisibility(View.GONE);
                                         }
-                                    }
-                                });
-                            }else{
-                                Toast.makeText(RegistrationPage.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
-                                progressBar.setVisibility(View.GONE);
-                            }
-                    }
+                                    });
+                        }else{
+                            Toast.makeText(RegistrationPage.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
                 });
 
 //        if (confirmPassword.isEmpty()){

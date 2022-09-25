@@ -38,6 +38,7 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
     private TextView makeAccount, forgotPassword;
     private EditText editTextEmail, editTextpassword;
     private Button signIn;
+    private CheckBox passwordCheckBox;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
@@ -46,6 +47,8 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+
+        passwordCheckBox = findViewById(R.id.chk3);
 
         makeAccount= (TextView) findViewById(R.id.makeAccount);
         makeAccount.setOnClickListener(this);
@@ -62,6 +65,16 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         forgotPassword.setOnClickListener(this);
 
         mAuth= FirebaseAuth.getInstance();
+
+        passwordCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+
+            if(isChecked){
+                editTextpassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+            }else{
+                editTextpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+        });
     }
 
     @Override
