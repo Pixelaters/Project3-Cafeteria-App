@@ -11,17 +11,37 @@ import com.bumptech.glide.Glide;
 public class Product {
     private String id;
     private String name;
+    private String description;
     private double price;
     private boolean isAvailable;
     private String imageUrl;
 
-    public Product(String id, String name, double price, boolean isAvailable, String imageUrl) {
+    public static void setItemCallback(DiffUtil.ItemCallback<Product> itemCallback) {
+        Product.itemCallback = itemCallback;
+    }
+
+    public Product(String id, String name, String description, double price, boolean isAvailable, String imageUrl) {
         this.id = id;
         this.name = name;
+        this.description= description;
         this.price = price;
         this.isAvailable = isAvailable;
         this.imageUrl = imageUrl;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public static DiffUtil.ItemCallback<Product> getItemCallback() {
+        return itemCallback;
+    }
+
+
 
     public String getId() {
         return id;
@@ -68,6 +88,7 @@ public class Product {
         return "Product{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", price=" + price +
                 ", isAvailable=" + isAvailable +
                 ", imageUrl='" + imageUrl + '\'' +
@@ -79,7 +100,8 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(product.getPrice(), getPrice()) == 0 && isAvailable() == product.isAvailable() && getId().equals(product.getId()) && getName().equals(product.getName()) && getImageUrl().equals(product.getImageUrl());
+        return Double.compare(product.getPrice(), getPrice()) == 0 && isAvailable() == product.isAvailable() && getId().equals(product.getId()) && getName().equals(product.getName())
+                && getImageUrl().equals(product.getImageUrl()) && getDescription().equals((product.getDescription()));
     }
 
 
