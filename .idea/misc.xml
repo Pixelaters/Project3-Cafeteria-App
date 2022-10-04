@@ -12,6 +12,11 @@
         <entry key="..\:/Users/raeec/Desktop/Projects/Project3-Cafeteria-App/app/src/main/res/layout/activity_update_account.xml" value="0.25" />
         <entry key="..\:/Users/raeec/Desktop/Projects/Project3-Cafeteria-App/app/src/main/res/layout/activity_update_password.xml" value="0.25" />
         <entry key="..\:/Users/raeec/Desktop/Projects/Project3-Cafeteria-App/app/src/main/res/layout/activity_user_settings.xml" value="0.25" />
+        <entry key="..\:/Users/raeec/Documents/GitHub/Project3-Cafeteria-App/app/src/main/res/layout/activity_delete_account.xml" value="0.25" />
+        <entry key="..\:/Users/raeec/Documents/GitHub/Project3-Cafeteria-App/app/src/main/res/layout/activity_login_page.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/raeec/Documents/GitHub/Project3-Cafeteria-App/app/src/main/res/layout/activity_update_pass.xml" value="0.25" />
+        <entry key="..\:/Users/raeec/Documents/GitHub/Project3-Cafeteria-App/app/src/main/res/layout/activity_update_password.xml" value="0.18497109826589594" />
+        <entry key="..\:/Users/raeec/Documents/GitHub/Project3-Cafeteria-App/app/src/main/res/layout/activity_user_settings.xml" value="0.1" />
         <entry key="..\:/Users/zpete/Documents/Github/AndroidStudio/Project3-Cafeteria-App/app/src/main/res/layout/activity_delete_account.xml" value="0.151268115942029" />
         <entry key="..\:/Users/zpete/Documents/Github/AndroidStudio/Project3-Cafeteria-App/app/src/main/res/layout/activity_forgot_password.xml" value="0.20454545454545456" />
         <entry key="..\:/Users/zpete/Documents/Github/AndroidStudio/Project3-Cafeteria-App/app/src/main/res/layout/activity_homepage.xml" value="0.22" />
@@ -20,13 +25,11 @@
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/drawable/image_bg.xml" value="0.192" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/drawable/user_mail.xml" value="0.192" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_delete_account.xml" value="0.2563405797101449" />
-        <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
+        <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_forgot_password.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_homepage.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_login_page.xml" value="0.33" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_order_take_away.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_orderspage.xml" value="0.2563405797101449" />
-        <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_registration_page.xml" value="0.32019927536231885" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/activity_update_password.xml" value="0.11347517730496454" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/cart_row.xml" value="0.3692708333333333" />
         <entry key="..\:/Users/zpete/Documents/Github/Project 3/Project3-Cafeteria-App/app/src/main/res/layout/fragment_cart.xml" value="0.358695652173913" />
