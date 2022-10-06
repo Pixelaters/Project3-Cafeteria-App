@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -88,13 +87,16 @@
 
             <Button
                 android:id="@+id/addToCartButton"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:enabled="@{shopViewModel.product.available}"
+                android:background="@color/blue"
                 android:text="Add to cart"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+
                 android:onClick="@{() -> shopViewModel.addItemToCart(shopViewModel.product)}"
+
+                android:textColor="#fff"
 
                 />
         </LinearLayout>
