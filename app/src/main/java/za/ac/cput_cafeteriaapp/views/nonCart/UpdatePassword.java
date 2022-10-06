@@ -23,7 +23,6 @@ import za.ac.cput_cafeteriaapp.databinding.ActivityUpdatePasswordBinding;
 public class UpdatePassword extends AppCompatActivity {
     ActivityUpdatePasswordBinding binding;
     DatabaseReference databaseReference;
-    private TextView cancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,7 +30,7 @@ public class UpdatePassword extends AppCompatActivity {
         binding = ActivityUpdatePasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        cancel = findViewById(R.id.back);
+
 
 
 
@@ -53,12 +52,23 @@ public class UpdatePassword extends AppCompatActivity {
             }
         });
 
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                previous();
+            }
+        });
+
 
 
     }
 
+    private  void previous() {
+        Intent back = new Intent(this,UserSettings.class);
+        startActivity(back);
 
 
+    }
 
 
     private void updateData(String nPass, String con) {
@@ -75,7 +85,7 @@ public class UpdatePassword extends AppCompatActivity {
                     binding.password.setText("");
                     binding.conPassword.setText("");
 
-                    Toast.makeText(UpdatePassword.this, "Password updated succcessfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdatePassword.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
 
                 }else{
                     Toast.makeText(UpdatePassword.this, "Failed to update the password", Toast.LENGTH_SHORT).show();
