@@ -22,6 +22,9 @@ import za.ac.cput_cafeteriaapp.R;
 import za.ac.cput_cafeteriaapp.models.CartItem;
 import za.ac.cput_cafeteriaapp.viewmodels.ShopViewModel;
 import za.ac.cput_cafeteriaapp.views.nonCart.Homepage;
+import za.ac.cput_cafeteriaapp.views.nonCart.RateUsPage;
+import za.ac.cput_cafeteriaapp.views.nonCart.UserSettings;
+import za.ac.cput_cafeteriaapp.views.nonCart.WelcomePage;
 
 //VIDEO ENDED AT EP 12 MID WAY
 public class MainActivity extends AppCompatActivity {
@@ -66,6 +69,36 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
+        switch(item.getItemId()) {
+            case R.id.navLogOut:
+                homePage();
+                return true;
+
+            case R.id.navRateUs:
+                rateUsPage();
+                return true;
+
+            case R.id.navAccount:
+                accountPage();
+                return true;
+
+            default:
+                return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void homePage(){
+        Intent goBack = new Intent(this, WelcomePage.class);
+        startActivity(goBack);
+    }
+
+    public void rateUsPage(){
+        Intent rateUs = new Intent(this, RateUsPage.class);
+        startActivity(rateUs);
+    }
+
+    public void accountPage(){
+        Intent userAccount = new Intent(this, UserSettings.class);
+        startActivity(userAccount);
     }
 }
