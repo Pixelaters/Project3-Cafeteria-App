@@ -6,4 +6,17 @@
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         app:showAsAction="always"
         />
+
+    <item
+        android:id="@+id/navAccount"
+        android:title="Account"/>
+
+    <item
+        android:id="@+id/navRateUs"
+        android:title="Rate Us"/>
+
+    <item
+        android:id="@+id/navLogOut"
+        android:title="Log out"/>
+
 </menu>

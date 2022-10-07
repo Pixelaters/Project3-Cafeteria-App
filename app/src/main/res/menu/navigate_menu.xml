@@ -18,5 +18,9 @@
         android:title="Takeaway"
         />
 
+    <item
+        android:id="@+id/navLogOut"
+        android:title="Log out"/>
+
 
 </menu>
