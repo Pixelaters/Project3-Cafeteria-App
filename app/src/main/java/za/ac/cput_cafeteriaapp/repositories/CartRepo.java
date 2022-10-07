@@ -1,7 +1,12 @@
 package za.ac.cput_cafeteriaapp.repositories;
 //Ziyaad
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +16,7 @@ import za.ac.cput_cafeteriaapp.models.Product;
 
 public class CartRepo {
 
+    private static final String TAG = "Cart repo";
     private MutableLiveData<List<CartItem>> mutableCart = new MutableLiveData<>();
 
     private MutableLiveData<Double> mutableTotalPrice= new MutableLiveData<>();
@@ -94,6 +100,16 @@ public class CartRepo {
             mutableTotalPrice.setValue(0.0);
         }
         return mutableTotalPrice;
+    }
+
+    public List listCartItems(){
+        ArrayList<String> products = new ArrayList<String>();
+        List<CartItem> cartItemList = mutableCart.getValue();
+        for (CartItem cartItem: cartItemList){
+            products.add(cartItem.getProduct().getName());
+        }
+        return products;
+
     }
 
 }
