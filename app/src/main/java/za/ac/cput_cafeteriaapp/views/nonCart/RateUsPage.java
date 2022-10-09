@@ -1,67 +1,102 @@
 package za.ac.cput_cafeteriaapp.views.nonCart;
 //RateUs Page.
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import za.ac.cput_cafeteriaapp.R;
+import za.ac.cput_cafeteriaapp.views.MainActivity;
 
-public class RateUsPage extends AppCompatActivity implements View.OnClickListener{
+public class RateUsPage extends AppCompatActivity{
+    AppCompatButton rateUsBtn;
+    AppCompatButton dontRateBtn;
+    public RatingBar ratingBar;
+    ImageView emojiPic;
 
-    private RatingBar ratingBar;
+     float userRate = 0;
 
-    private EditText feedBack;
-
-    private Button btnSubmit;
-
+    public RateUsPage() {
+        //super();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rateuspage);
 
-        addListenerOnButton();
-    }
+        rateUsBtn = findViewById(R.id.rateUs);
+        dontRateBtn = findViewById(R.id.dontRateUs);
+        ratingBar = findViewById(R.id.rateUsBar);
+        emojiPic = findViewById(R.id.emoji);
 
-    private void addListenerOnButton() {
-
-        //feedBack=(EditText) findViewById(R.id.feedBack);
-        btnSubmit = (Button) findViewById(R.id.button);
-
-        btnSubmit.setOnClickListener(new View.OnClickListener(){
-
-            private Integer integer;
-
+        rateUsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String value1 = feedBack.getText().toString();
-
-                int feedback1 = integer.parseInt(value1);
-
-                int a =integer.parseInt(value1);
-                Toast.makeText(getApplicationContext(),String.valueOf(feedback1),Toast.LENGTH_LONG);
+                //code for database
             }
         });
+
+        dontRateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //dismiss();
+            }
+        });
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                if(rating <= 1){
+                    emojiPic.setImageResource(R.drawable.one_star);
+
+                }else if(rating <= 2){
+                    emojiPic.setImageResource(R.drawable.two_star);
+
+                }else  if(rating <= 3){
+                    emojiPic.setImageResource(R.drawable.three_star);
+
+                }else if(rating <= 4){
+                    emojiPic.setImageResource(R.drawable.four_star);
+
+                }else if(rating == 5){
+                    emojiPic.setImageResource(R.drawable.five_star);
+                }
+
+                emoji(emojiPic);
+
+                userRate = rating;
+
+            }
+        });
+
     }
 
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
+    private void emoji(ImageView ratingEmoji){
+        ScaleAnimation animation = new ScaleAnimation(0,1f,0, 1f ,
+                Animation.RELATIVE_TO_SELF,0.5f, Animation.RELATIVE_TO_SELF,0.5f);
+        animation.setFillAfter(true);
+        animation.setDuration(200);
+        ratingEmoji.startAnimation(animation);
     }
 
-    @Override
-    public void onClick(View view) {
-
-    }
 }
+
