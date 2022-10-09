@@ -64,41 +64,33 @@ public class DeleteAccount extends AppCompatActivity implements View.OnClickList
         String email = binding.deleteEmail.getText().toString();
         String password = binding.deletePassword.getText().toString();
 
+
+
         binding.cancelDeletion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 previous();
             }
         });
-//        if (email.isEmpty()) {
-//            deleteEmail.setError("Email is required");
-//            deleteEmail.requestFocus();
-//            return;
-//        }
-//
-//        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-//            deleteEmail.setError("Please use the correct email");
-//            deleteEmail.requestFocus();
-//            return;
-//        }
-//
-//        if (password.isEmpty()){
-//            deletePassword.setError("Password is required");
-//            deletePassword.requestFocus();
-//            return;
-//        }
-//
-//        if (password.length()<6){
-//            deletePassword.setError("Password should be at least 6 characters");
-//            deletePassword.requestFocus();
-//            return;
-//        }
 
-        if (!email.isEmpty() && !password.isEmpty()){
-            deleteUser(email);
-        } else{
-            Toast.makeText(this, "Email and Username cannot be empty", Toast.LENGTH_SHORT).show();
-        }
+        binding.finalDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String email = binding.deleteEmail.getText().toString();
+                String password = binding.deletePassword.getText().toString();
+
+                if (!email.isEmpty() && !password.isEmpty()){
+                    deleteUser(email);
+                } else{
+                    Toast.makeText(DeleteAccount.this, "Email and Password cannot be empty", Toast.LENGTH_SHORT).show();
+                }
+                deleteUser(email);
+            }
+        });
+
+
+
 
     }
 

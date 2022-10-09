@@ -44,44 +44,34 @@
         android:layout_marginBottom="656dp"
         android:text="User Settings" />
 
-    <TextView
+
+    <EditText
         android:id="@+id/usernameUpdate"
         android:layout_width="wrap_content"
-        android:layout_height="53dp"
+        android:layout_height="42dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="242dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="449dp" />
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="293dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="396dp"
+        android:hint="Please enter your new username" />
 
-    <TextView
+    <EditText
         android:id="@+id/nameUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
+        android:layout_width="269dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="294dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="390dp" />
-
-    <TextView
-        android:id="@+id/emailUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="365dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="313dp" />
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="356dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="328dp"
+        android:hint="Please enter your name" />
 
     <Button
         android:id="@+id/detailsUpdate"
@@ -125,33 +115,9 @@
         android:layout_marginBottom="183dp"
         android:text="Change Password" />
 
-    <TextView
-        android:id="@+id/usernameTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="252dp"
-        android:layout_marginBottom="471dp"
-        android:text="Username" />
 
-    <TextView
-        android:id="@+id/updateName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="280dp"
-        android:layout_marginBottom="417dp"
-        android:text="Name" />
 
-    <TextView
-        android:id="@+id/updateEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="279dp"
-        android:layout_marginBottom="349dp"
-        android:text="E-mail" />
+
+
+
 </RelativeLayout>

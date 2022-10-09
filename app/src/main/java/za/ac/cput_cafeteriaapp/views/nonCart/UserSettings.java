@@ -38,9 +38,10 @@ public class UserSettings extends AppCompatActivity {
         binding.detailsUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String username = binding.usernameUpdate.getText().toString();
                 String name = binding.nameUpdate.getText().toString();
 
-                updateData(name);
+                updateData(name, username);
             }
         });
 
@@ -48,21 +49,23 @@ public class UserSettings extends AppCompatActivity {
 
     }
 
-    private void updateData(String name) {
+    private void updateData(String name, String username) {
 
         HashMap user = new HashMap();
+        user.put("Username", username);
         user.put("Name",name);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(name).updateChildren(user).addOnCompleteListener(new OnCompleteListener() {
+        databaseReference.child(name + username).updateChildren(user).addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()){
+                    binding.usernameUpdate.setText("");
                     binding.nameUpdate.setText("");
 
-                    Toast.makeText(UserSettings.this, "Name updated successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserSettings.this, "Name/username  updated successfully", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(UserSettings.this, "Name could not be found or updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserSettings.this, "Name/username could not be found or updated", Toast.LENGTH_SHORT).show();
                 }
             }
         });
