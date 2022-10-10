@@ -42,7 +42,9 @@
             android:layout_gravity="end"
             android:layout_margin="8dp"
             android:text="Place Order"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+           />
 
     </LinearLayout>
 </ScrollView>
