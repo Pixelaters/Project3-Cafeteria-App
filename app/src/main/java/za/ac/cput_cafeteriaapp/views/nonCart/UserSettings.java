@@ -46,6 +46,28 @@ public class UserSettings extends AppCompatActivity {
         });
 
 
+        binding.passwordChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserSettings.this,UpdatePassword.class));
+            }
+        });
+
+        binding.deleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserSettings.this,DeleteAccount.class));
+            }
+        });
+
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserSettings.this,Homepage.class));
+            }
+        });
+
+
 
     }
 

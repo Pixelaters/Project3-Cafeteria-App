@@ -37,12 +37,12 @@ public class UpdatePassword extends AppCompatActivity {
 
 
 
-        binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
+        binding.changePasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String old = binding.oldPass.getText().toString();
                 String nPass = binding.password.getText().toString();
-                String con = binding.conPassword.getText().toString();
+                String con = binding.conPass.getText().toString();
 
                 updateData(nPass, con);
 
@@ -83,7 +83,7 @@ public class UpdatePassword extends AppCompatActivity {
                 if (task.isSuccessful()){
                     binding.oldPass.setText("");
                     binding.password.setText("");
-                    binding.conPassword.setText("");
+                    binding.conPass.setText("");
 
                     Toast.makeText(UpdatePassword.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
 
