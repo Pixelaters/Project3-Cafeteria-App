@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import za.ac.cput_cafeteriaapp.R;
+import za.ac.cput_cafeteriaapp.views.CartFragment;
 import za.ac.cput_cafeteriaapp.views.MainActivity;
 
 public class RateUsPage extends AppCompatActivity{
@@ -71,7 +72,7 @@ public class RateUsPage extends AppCompatActivity{
                 rating = new UserRating(LoginPage.user.getEmail(),countUserRate);
                 userRating.push().setValue(rating);
                 Toast.makeText(RateUsPage.this,"Thank you for rating us",Toast.LENGTH_LONG).show();
-                logOut();
+                goToCartFragment();
                 //code for database
             }
         });
@@ -122,6 +123,12 @@ public class RateUsPage extends AppCompatActivity{
     public void logOut(){
         Intent logOut = new Intent(this,WelcomePage.class);
         startActivity(logOut);
+    }
+
+    public void goToCartFragment(){
+        Intent intent = new Intent(this, CartFragment.class);
+        startActivity(intent);
+
     }
 
 }
