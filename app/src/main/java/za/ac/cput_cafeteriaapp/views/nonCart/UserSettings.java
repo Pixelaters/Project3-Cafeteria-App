@@ -18,6 +18,7 @@ import java.util.HashMap;
 
 import za.ac.cput_cafeteriaapp.R;
 import za.ac.cput_cafeteriaapp.databinding.ActivityUserSettingsBinding;
+import za.ac.cput_cafeteriaapp.views.ShopFragment;
 
 public class UserSettings extends AppCompatActivity {
     ActivityUserSettingsBinding binding;
@@ -63,7 +64,7 @@ public class UserSettings extends AppCompatActivity {
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserSettings.this,Homepage.class));
+                startActivity(new Intent(UserSettings.this, ShopFragment.class));
             }
         });
 

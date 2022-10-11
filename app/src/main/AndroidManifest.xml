@@ -25,7 +25,7 @@
             android:name=".views.nonCart.ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".views.nonCart.LoginPage"
+            android:name=".views.nonCart.UserSettings"
             android:exported="false" />
         <activity
             android:name=".views.nonCart.Homepage"
@@ -35,7 +35,7 @@
             android:exported="true" />
 <!--        .views.MainActivity .views.nonCart.LoginPage-->
         <activity
-            android:name=".views.nonCart.UserSettings"
+            android:name=".views.nonCart.LoginPage"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
