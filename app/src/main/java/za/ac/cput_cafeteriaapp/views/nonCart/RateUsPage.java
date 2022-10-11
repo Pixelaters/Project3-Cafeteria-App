@@ -18,14 +18,23 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import za.ac.cput_cafeteriaapp.R;
 import za.ac.cput_cafeteriaapp.views.MainActivity;
 
 public class RateUsPage extends AppCompatActivity{
+    DatabaseReference userRating;
+    LoginPage loginPage;
+    UserRating rating;
+
     AppCompatButton rateUsBtn;
     AppCompatButton dontRateBtn;
     public RatingBar ratingBar;
@@ -37,10 +46,17 @@ public class RateUsPage extends AppCompatActivity{
         //super();
     }
 
+    public RateUsPage(String email,float rating){
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rateuspage);
+
+        userRating = FirebaseDatabase.getInstance("https://project-3-cafeteria-app-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("UserRating");
+        loginPage = new LoginPage();
 
         rateUsBtn = findViewById(R.id.rateUs);
         dontRateBtn = findViewById(R.id.dontRateUs);
@@ -50,6 +66,12 @@ public class RateUsPage extends AppCompatActivity{
         rateUsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                float countUserRate = ratingBar.getRating();
+
+                rating = new UserRating(LoginPage.user.getEmail(),countUserRate);
+                userRating.push().setValue(rating);
+                Toast.makeText(RateUsPage.this,"Thank you for rating us",Toast.LENGTH_LONG).show();
+                logOut();
                 //code for database
             }
         });
@@ -57,7 +79,7 @@ public class RateUsPage extends AppCompatActivity{
         dontRateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //dismiss();
+                logOut();
             }
         });
 
@@ -82,7 +104,6 @@ public class RateUsPage extends AppCompatActivity{
                 }
 
                 emoji(emojiPic);
-
                 userRate = rating;
 
             }
@@ -96,6 +117,11 @@ public class RateUsPage extends AppCompatActivity{
         animation.setFillAfter(true);
         animation.setDuration(200);
         ratingEmoji.startAnimation(animation);
+    }
+
+    public void logOut(){
+        Intent logOut = new Intent(this,WelcomePage.class);
+        startActivity(logOut);
     }
 
 }
