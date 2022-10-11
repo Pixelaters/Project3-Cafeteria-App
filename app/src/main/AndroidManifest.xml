@@ -19,7 +19,7 @@
             android:name=".views.nonCart.UpdatePassword"
             android:exported="false" />
         <activity
-            android:name=".views.nonCart.DeleteAccount"
+            android:name=".views.nonCart.LoginPage"
             android:exported="false" />
         <activity
             android:name=".views.nonCart.ForgotPassword"
@@ -31,11 +31,15 @@
             android:name=".views.nonCart.Homepage"
             android:exported="true" />
         <activity
-            android:name=".views.nonCart.WelcomePage"
+            android:name=".views.nonCart.DeleteAccount"
             android:exported="true" />
 <!--        .views.MainActivity .views.nonCart.LoginPage-->
         <activity
-            android:name=".views.nonCart.LoginPage"
+            android:name=".views.nonCart.RateUsPage"
+            android:exported="true"/>
+
+        <activity
+            android:name=".views.nonCart.WelcomePage"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
