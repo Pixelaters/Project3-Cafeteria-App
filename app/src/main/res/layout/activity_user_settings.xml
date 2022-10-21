@@ -45,33 +45,19 @@
         android:text="User Settings" />
 
 
-    <EditText
-        android:id="@+id/usernameUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="293dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="396dp"
-        android:hint="Please enter your new username" />
-
-    <EditText
+    <TextView
         android:id="@+id/nameUpdate"
-        android:layout_width="269dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="356dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="328dp"
-        android:hint="Please enter your name" />
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="294dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="390dp" />
+
 
     <Button
         android:id="@+id/detailsUpdate"
@@ -117,26 +103,14 @@
 
 
     <TextView
-        android:id="@+id/back"
-        android:layout_width="95dp"
-        android:layout_height="35dp"
+        android:id="@+id/updateName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="286dp"
-        android:layout_marginBottom="20dp"
-        android:text="back"
-        android:textColor="@color/teal_700"
-        android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925" />
-
-
-
-
+        android:layout_marginEnd="280dp"
+        android:layout_marginBottom="417dp"
+        android:text="Name" />
 
 
 </RelativeLayout>

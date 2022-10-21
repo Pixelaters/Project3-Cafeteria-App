@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cput_logo"
     tools:context=".views.nonCart.DeleteAccount">
 
     <TextView
@@ -19,6 +20,7 @@
         android:layout_marginEnd="19dp"
         android:layout_marginBottom="454dp"
         android:text="Are you sure you wish to delete your account? You will not be able to recover it and all bonuses/coupons will be lost?"
+        android:textColor="#000000"
         android:textSize="30sp"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="171dp" />
@@ -26,54 +28,70 @@
 
     <EditText
         android:id="@+id/deleteEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="89dp"
-        android:layout_marginBottom="391dp"
-        android:hint="Please enter your email address" />
+        android:layout_marginEnd="-6dp"
+        android:layout_marginBottom="261dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textCapWords"
+        android:maxLength="30"
+        android:text="Please enter your email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.427"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.542"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/deletePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="378dp"
-        android:layout_marginEnd="89dp"
-        android:layout_marginBottom="313dp"
-        android:hint="Please enter your password" />
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="150dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textCapWords"
+        android:maxLength="30"
+        android:text="Please enter your password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.427"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.542"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/finalDelete"
-        android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_width="198dp"
+        android:layout_height="79dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginStart="210dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="0dp"
+        android:background="#384BB5"
         android:text="Delete Account" />
 
     <Button
         android:id="@+id/cancelDeletion"
-        android:layout_width="408dp"
-        android:layout_height="83dp"
+        android:layout_width="199dp"
+        android:layout_height="76dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="78dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="207dp"
+        android:layout_marginBottom="2dp"
+        android:background="#876E6C"
         android:text="Cancel" />
 
 </RelativeLayout>

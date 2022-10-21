@@ -52,7 +52,7 @@ public class UpdatePassword extends AppCompatActivity {
             }
         });
 
-        binding.back.setOnClickListener(new View.OnClickListener() {
+        binding.Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 previous();
