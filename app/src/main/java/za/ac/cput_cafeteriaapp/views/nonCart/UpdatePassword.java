@@ -5,13 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,14 +26,18 @@ import za.ac.cput_cafeteriaapp.R;
 import za.ac.cput_cafeteriaapp.databinding.ActivityUpdatePasswordBinding;
 
 public class UpdatePassword extends AppCompatActivity {
-    ActivityUpdatePasswordBinding binding;
-    DatabaseReference databaseReference;
+
+    final EditText old = findViewById(R.id.oldPass);
+    final EditText nPass = findViewById(R.id.password);
+    final EditText con = findViewById(R.id.conPass);
+    
+    Button btnUpdate = findViewById(R.id.changePasswordBtn);
+    Button btnCancel = findViewById(R.id.Cancel);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        binding = ActivityUpdatePasswordBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_update_password);
 
 
 
@@ -37,14 +46,28 @@ public class UpdatePassword extends AppCompatActivity {
 
 
 
-        binding.changePasswordBtn.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String old = binding.oldPass.getText().toString();
-                String nPass = binding.password.getText().toString();
-                String con = binding.conPass.getText().toString();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String password = old.getText().toString();
+                String newPass = nPass.getText().toString();
+                String conPass = con.getText().toString();
+                UserProfileChangeRequest passwordchange = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(password)
+                        .build();
+                
+                user.updateProfile(passwordchange)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(UpdatePassword.this, "User password updated", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
 
-                updateData(nPass, con);
+                
 
 
 
@@ -52,7 +75,7 @@ public class UpdatePassword extends AppCompatActivity {
             }
         });
 
-        binding.Cancel.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 previous();
@@ -71,30 +94,9 @@ public class UpdatePassword extends AppCompatActivity {
     }
 
 
-    private void updateData(String nPass, String con) {
-        HashMap user = new HashMap();
-        user.put("PASSWORD",nPass);
 
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(nPass).updateChildren(user).addOnCompleteListener(new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                if (task.isSuccessful()){
-                    binding.oldPass.setText("");
-                    binding.password.setText("");
-                    binding.conPass.setText("");
-
-                    Toast.makeText(UpdatePassword.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
-
-                }else{
-                    Toast.makeText(UpdatePassword.this, "Failed to update the password", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
 
 
 
-}

@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,76 +26,68 @@ import za.ac.cput_cafeteriaapp.databinding.ActivityUserSettingsBinding;
 import za.ac.cput_cafeteriaapp.views.ShopFragment;
 
 public class UserSettings extends AppCompatActivity {
-    ActivityUserSettingsBinding binding;
-    DatabaseReference databaseReference;
+    private EditText name;
     private Button btnSave, btnChange, btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         super.onCreate(savedInstanceState);
-        binding = ActivityUserSettingsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_user_settings);
 
+        final EditText name = findViewById(R.id.nameUpdate);
+        
         btnSave = findViewById(R.id.detailsUpdate);
         btnChange = findViewById(R.id.passwordChange);
         btnDelete = findViewById(R.id.deleteAccount);
 
 
-        binding.detailsUpdate.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = binding.usernameUpdate.getText().toString();
-                String name = binding.nameUpdate.getText().toString();
-
-                updateData(name, username);
+                
+                updateUser(name.getText().toString());
             }
         });
 
 
-        binding.passwordChange.setOnClickListener(new View.OnClickListener() {
+        btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserSettings.this,UpdatePassword.class));
+            public void onClick(View view) {
+                Intent change = new Intent(UserSettings.this, UpdatePassword.class);
+                startActivity(change);
             }
         });
 
-        binding.deleteAccount.setOnClickListener(new View.OnClickListener() {
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserSettings.this,DeleteAccount.class));
             }
         });
 
-        binding.back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserSettings.this, ShopFragment.class));
-            }
-        });
+
 
 
 
     }
 
-    private void updateData(String name, String username) {
+    private void updateUser(String name) {
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                        .build();
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Log.d(name, "user profile updated");
+                        }
+                    }
+                });
 
-        HashMap user = new HashMap();
-        user.put("Username", username);
-        user.put("Name",name);
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(name + username).updateChildren(user).addOnCompleteListener(new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                if (task.isSuccessful()){
-                    binding.usernameUpdate.setText("");
-                    binding.nameUpdate.setText("");
-
-                    Toast.makeText(UserSettings.this, "Name/username  updated successfully", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(UserSettings.this, "Name/username could not be found or updated", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
+
+
 }

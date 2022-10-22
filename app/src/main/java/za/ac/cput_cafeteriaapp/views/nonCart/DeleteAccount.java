@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -24,153 +27,73 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import za.ac.cput_cafeteriaapp.R;
 import za.ac.cput_cafeteriaapp.databinding.ActivityDeleteAccountBinding;
+import za.ac.cput_cafeteriaapp.views.ShopFragment;
 
-public class DeleteAccount extends AppCompatActivity implements View.OnClickListener {
-//    private EditText deleteEmail,deletePassword;
-//    private Button deleteBtn,cancelBtn;
-//
-//    private FirebaseAuth mAuth;
-//    private ProgressBar progressBar7;
+public class DeleteAccount extends AppCompatActivity {
 
-
-    ActivityDeleteAccountBinding binding;
-    DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
         super.onCreate(savedInstanceState);
-        binding = ActivityDeleteAccountBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-//    deleteBtn = (Button) findViewById(R.id.finalDelete);
-//    deleteBtn.setOnClickListener(this);
-//
-//    cancelBtn = (Button) findViewById(R.id.cancelDeletion);
-//    cancelBtn.setOnClickListener(this);
-//
-//    deleteEmail = (EditText) findViewById(R.id.deleteEmail);
-//    deletePassword = (EditText)  findViewById(R.id.deletePassword);
-//
-//    progressBar7 = (ProgressBar) findViewById(R.id.progressBar);
-//
-//    mAuth = FirebaseAuth.getInstance();
+        setContentView(R.layout.activity_delete_account);
 
-    }
+        final EditText email = findViewById(R.id.deleteEmail);
+        final EditText password = findViewById(R.id.deletePassword);
 
-    @Override
-    public void onClick(View view){
+        Button delete = findViewById(R.id.finalDelete);
+        Button cancel = findViewById(R.id.cancelDeletion);
 
-        String email = binding.deleteEmail.getText().toString();
-        String password = binding.deletePassword.getText().toString();
-
-
-
-        binding.cancelDeletion.setOnClickListener(new View.OnClickListener() {
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                previous();
+                deleteuser(email.getText().toString(),password.getText().toString());
+                startActivity(new Intent(DeleteAccount.this,WelcomePage.class));
             }
         });
 
-        binding.finalDelete.setOnClickListener(new View.OnClickListener() {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                String email = binding.deleteEmail.getText().toString();
-                String password = binding.deletePassword.getText().toString();
-
-                if (!email.isEmpty() && !password.isEmpty()){
-                    deleteUser(email);
-                } else{
-                    Toast.makeText(DeleteAccount.this, "Email and Password cannot be empty", Toast.LENGTH_SHORT).show();
-                }
-                deleteUser(email);
+            public void onClick(View view) {
+                Intent back = new Intent(DeleteAccount.this, UserSettings.class);
+                startActivity(back);
             }
         });
 
 
-
-
     }
 
-    private void previous() {
-        startActivity(new Intent(this,UserSettings.class));
-    }
+    private void deleteuser(String email, String password) {
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        //get auth credentials from the user re authentication
+        AuthCredential credential = EmailAuthProvider.getCredential(email, password);
 
-    private void deleteUser(String email) {
-    reference = FirebaseDatabase.getInstance().getReference("Users");
-    reference.child(email).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-        @Override
-        public void onComplete(@NonNull Task<Void> task) {
-            if (task.isSuccessful()){
-                Toast.makeText(DeleteAccount.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
-                binding.deleteEmail.setText("");
-            }else{
-                Toast.makeText(DeleteAccount.this, "Failed to delete Account", Toast.LENGTH_SHORT).show();
-            }
+        if (user !=null){
+            user.reauthenticate(credential)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            user.delete()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d("TAG", "User account deleted.");
+                                                startActivity(new Intent(DeleteAccount.this, UserSettings.class));
+                                                Toast.makeText(DeleteAccount.this, "Deleted User successfully.", Toast.LENGTH_LONG).show();
+
+                                            }
+                                        }
+                                    });
+                        }
+                    });
         }
-    });
 
-
+        user.delete();
     }
 
-//    private void userDeletion() {
-//        String email = deleteEmail.getText().toString();
-//        String password = deletePassword.getText().toString();
-//
-//        if (email.isEmpty()) {
-//            deleteEmail.setError("Email is required");
-//            deleteEmail.requestFocus();
-//            return;
-//        }
-//
-//        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-//            deleteEmail.setError("Please use the correct email");
-//            deleteEmail.requestFocus();
-//            return;
-//        }
-//
-//        if (password.isEmpty()){
-//            deletePassword.setError("Password is required");
-//            deletePassword.requestFocus();
-//            return;
-//        }
-//
-//        if (password.length()<6){
-//            deletePassword.setError("Password should be at least 6 characters");
-//            deletePassword.requestFocus();
-//            return;
-//        }
-//
-//        progressBar7.setVisibility(View.VISIBLE);
-//
-//        mAuth.deleteWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>(){
-//          @Override
-//          public void OnComplete(@NonNull Task<AuthResult> task){
-//              //Delete the user account and returns to Login page
-//              if (task.isSuccessful()){
-//                  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//
-//              }
-//          }
-//
-//
-//
-//        });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//        }
-    }
+
+}
 
 
