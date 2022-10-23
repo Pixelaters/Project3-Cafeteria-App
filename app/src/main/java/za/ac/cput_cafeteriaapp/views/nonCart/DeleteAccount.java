@@ -1,8 +1,10 @@
 package za.ac.cput_cafeteriaapp.views.nonCart;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -30,6 +32,9 @@ import za.ac.cput_cafeteriaapp.databinding.ActivityDeleteAccountBinding;
 import za.ac.cput_cafeteriaapp.views.ShopFragment;
 
 public class DeleteAccount extends AppCompatActivity {
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +43,84 @@ public class DeleteAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_account);
 
-        final EditText email = findViewById(R.id.deleteEmail);
-        final EditText password = findViewById(R.id.deletePassword);
+        EditText email = findViewById(R.id.deleteEmail);
+        EditText password = findViewById(R.id.deletePassword);
+        progressBar = findViewById(R.id.progressBar);
+
+
 
         Button delete = findViewById(R.id.finalDelete);
         Button cancel = findViewById(R.id.cancelDeletion);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteuser(email.getText().toString(),password.getText().toString());
-                startActivity(new Intent(DeleteAccount.this,WelcomePage.class));
+                AlertDialog.Builder dialog = new AlertDialog.Builder(DeleteAccount.this);
+                dialog.setTitle("Are you sure");
+                dialog.setMessage("You will really lose all your data?");
+                dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                progressBar.setVisibility(View.GONE);
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(DeleteAccount.this, "User account is deleted", Toast.LENGTH_LONG).show();
+                                 Intent intent = new Intent(DeleteAccount.this, WelcomePage.class);
+                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                 startActivity(intent);
+                                }   else{
+                                    Toast.makeText(DeleteAccount.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                    }
+                });
+
+                dialog.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = dialog.create();
+                alertDialog.show();
+
             }
         });
+
+//        delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+////                progressBar.setVisibility(View.VISIBLE);
+////                firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+////                    @Override
+////                    public void onComplete(@NonNull Task<Void> task) {
+////                        progressBar.setVisibility(View.GONE);
+////                    if (task.isSuccessful()) {
+////                        deleteuser(email.getText().toString(), password.getText().toString());
+////                        Toast.makeText(DeleteAccount.this, "account deleted", Toast.LENGTH_LONG).show();
+////
+////                        Intent intent = new Intent(DeleteAccount.this, WelcomePage.class);
+////                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+////                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+////                        startActivity(intent);
+////                    }else{
+////                        Toast.makeText(DeleteAccount.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+////                    }
+////                    }
+////                });
+//
+//            }
+//        });
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,37 +133,40 @@ public class DeleteAccount extends AppCompatActivity {
 
     }
 
-    private void deleteuser(String email, String password) {
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        //get auth credentials from the user re authentication
-        AuthCredential credential = EmailAuthProvider.getCredential(email, password);
-
-        if (user !=null){
-            user.reauthenticate(credential)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            user.delete()
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Log.d("TAG", "User account deleted.");
-                                                startActivity(new Intent(DeleteAccount.this, UserSettings.class));
-                                                Toast.makeText(DeleteAccount.this, "Deleted User successfully.", Toast.LENGTH_LONG).show();
-
-                                            }
-                                        }
-                                    });
-                        }
-                    });
-        }
-
-        user.delete();
+//    private void deleteuser(String email, String password) {
+//        firebaseUser.getEmail();
+//
+//        //get auth credentials from the user re authentication
+//        AuthCredential credential = EmailAuthProvider.getCredential(email, password);
+//
+//        if (firebaseUser !=null){
+//            firebaseUser.reauthenticate(credential)
+//                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            firebaseUser.delete()
+//                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            if (task.isSuccessful()) {
+//                                                Log.d("TAG", "User account deleted.");
+//                                                startActivity(new Intent(DeleteAccount.this, WelcomePage.class));
+//                                                Toast.makeText(DeleteAccount.this, "Deleted User successfully.", Toast.LENGTH_LONG).show();
+//
+//
+//                                            } else{
+//                                                Toast.makeText(DeleteAccount.this, "", Toast.LENGTH_SHORT).show();
+//                                            }
+//                                        }
+//                                    });
+//                        }
+//                    });
     }
 
 
-}
+
+
+
+
 
 

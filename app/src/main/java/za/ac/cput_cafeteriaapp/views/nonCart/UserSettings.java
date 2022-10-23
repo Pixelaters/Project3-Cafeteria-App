@@ -28,6 +28,7 @@ import za.ac.cput_cafeteriaapp.views.ShopFragment;
 public class UserSettings extends AppCompatActivity {
     private EditText name;
     private Button btnSave, btnChange, btnDelete;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,8 @@ public class UserSettings extends AppCompatActivity {
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserSettings.this,DeleteAccount.class));
+            public void onClick(View view) {
+                startActivity(new Intent(UserSettings.this, DeleteAccount.class));
             }
         });
 
