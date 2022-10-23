@@ -58,13 +58,7 @@ public class UserSettings extends AppCompatActivity {
         btnDelete = findViewById(R.id.deleteAccount);
 
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                
-                updateUser(name.getText().toString());
-            }
-        });
+
 
 
 
@@ -82,22 +76,22 @@ public class UserSettings extends AppCompatActivity {
 
     }
 
-    private void updateUser(String name) {
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName(name)
-                        .build();
-        user.updateProfile(profileUpdates)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Log.d(name, "user profile updated");
-                        }
-                    }
-                });
-
-    }
+//    private void updateUser(String name) {
+//        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+//                .setDisplayName(name)
+//                        .build();
+//        user.updateProfile(profileUpdates)
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()){
+//                            Log.d(name, "user profile updated");
+//                        }
+//                    }
+//                });
+//
+//    }
 
 
 }
