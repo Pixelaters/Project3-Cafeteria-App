@@ -1,5 +1,6 @@
 package za.ac.cput_cafeteriaapp.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ import za.ac.cput_cafeteriaapp.databinding.FragmentCartBinding;
 import za.ac.cput_cafeteriaapp.models.CartItem;
 import za.ac.cput_cafeteriaapp.repositories.CartRepo;
 import za.ac.cput_cafeteriaapp.viewmodels.ShopViewModel;
+import za.ac.cput_cafeteriaapp.views.nonCart.CheckoutPage;
 import za.ac.cput_cafeteriaapp.views.nonCart.LoginPage;
 import za.ac.cput_cafeteriaapp.views.nonCart.User;
 import za.ac.cput_cafeteriaapp.views.nonCart.UserCart;
@@ -47,6 +49,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     LoginPage loginPage;
     DatabaseReference studentMealDbRef;
     UserCart userCart;
+    Double totalPrice;
 
 
 
@@ -95,6 +98,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
         shopViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
+                totalPrice = aDouble;
                 fragmentCartBinding.orderTotalTextView.setText("Total: R" + aDouble.toString());
             }
         });
@@ -105,9 +109,13 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
 //                Log.d(TAG, "User" + LoginPage.user.getEmail());
 //                Log.d(TAG, "onClick: " + shopViewModel.listCartItems());
                 //studentMealDbRef.push().setValue(LoginPage.user.getEmail() + shopViewModel.listCartItems());
-                userCart= new UserCart(LoginPage.user.getEmail(),shopViewModel.listCartItems() );
-                studentMealDbRef.push().setValue(userCart);
-                navController.navigate(R.id.action_cartFragment_to_orderFragment);
+//                userCart= new UserCart(LoginPage.user.getEmail(),shopViewModel.listCartItems() );
+//                studentMealDbRef.push().setValue(userCart);
+//                navController.navigate(R.id.action_cartFragment_to_orderFragment);
+                      Intent intent = new Intent(getActivity(), CheckoutPage.class);
+                intent.putExtra("amount", String.format("%.2f", totalPrice));
+                startActivity(intent);
+
             }
         });
     }

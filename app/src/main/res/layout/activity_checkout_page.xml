@@ -56,161 +56,109 @@
             />
 </LinearLayout>
 
-
-            <com.google.android.material.textfield.TextInputLayout
-
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:hint="Card Number"
-                android:textColorHint="@color/blue"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/blue"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconTint="@color/blue"
+                <EditText
+              android:id="@+id/card_number"
+        android:layout_width="254dp"
+        android:layout_height="44dp"
+        android:ems="10"
+                        android:hint="Card Number"
+        android:gravity="start|top"
+        android:inputType="textCapWords"
+        android:minHeight="48dp"
+     app:endIconTint="@color/blue"
                 app:hintTextColor="@color/blue"
                 app:startIconDrawable="@drawable/card"
-                app:startIconTint="@color/blue">
+                app:startIconTint="@color/blue"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/card_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="61dp"
-                    android:inputType="text"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-            <com.google.android.material.textfield.TextInputLayout
+                                <EditText
+                            android:id="@+id/expiration_date"
+        android:layout_width="254dp"
+        android:layout_height="44dp"
+        android:ems="10"
 
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="20dp"
                 android:hint="Expiration Date"
-                android:layout_marginEnd="10dp"
-                android:textColorHint="@color/blue"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/blue"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconTint="@color/blue"
+        android:gravity="start|top"
+        android:inputType="textCapWords"
+        android:minHeight="48dp"
+     app:endIconTint="@color/blue"
                 app:hintTextColor="@color/blue"
+
                 app:startIconDrawable="@drawable/expiration_date"
-                app:startIconTint="@color/blue">
+                app:startIconTint="@color/blue"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/expiration_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:inputType="text"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+                                               <EditText
+                            android:id="@+id/cvv"
+        android:layout_width="254dp"
+        android:layout_height="44dp"
+        android:ems="10"
 
-            <com.google.android.material.textfield.TextInputLayout
-
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="20dp"
-                android:hint="CVV"
-                android:textColorHint="@color/blue"
-                app:boxStrokeColor="@color/blue"
-                  app:boxStrokeWidth="2dp"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconTint="@color/blue"
+                 android:hint="CVV"
+        android:gravity="start|top"
+        android:inputType="textCapWords"
+        android:minHeight="48dp"
+     app:endIconTint="@color/blue"
                 app:hintTextColor="@color/blue"
-                >
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/cvv"
-                    android:layout_width="match_parent"
-                    android:layout_height="57dp"
-                    android:inputType="text"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+        tools:ignore="SpeakableTextPresentCheck" />
+
             </LinearLayout>
 
-              <com.google.android.material.textfield.TextInputLayout
-
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Postal Code"
-                android:textColorHint="@color/blue"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/blue"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconTint="@color/blue"
+             <EditText
+              android:id="@+id/postal_code"
+        android:layout_width="254dp"
+        android:layout_height="44dp"
+        android:ems="10"
+           android:hint="Postal Code"
+        android:gravity="start|top"
+        android:inputType="textCapWords"
+        android:minHeight="48dp"
+     app:endIconTint="@color/blue"
                 app:hintTextColor="@color/blue"
-                app:startIconDrawable="@drawable/postal_code"
-                app:startIconTint="@color/blue">
+                       app:startIconDrawable="@drawable/postal_code"
+                app:startIconTint="@color/blue"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/postal_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:inputType="text"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-               <com.google.android.material.textfield.TextInputLayout
 
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                   android:layout_weight="1"
-                android:layout_marginTop="20dp"
-                android:hint="Country Code"
-                android:textColorHint="@color/blue"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/blue"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconTint="@color/blue"
+                           <EditText
+                       android:id="@+id/country_code"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:ems="10"
+                        android:hint="Country Code"
+        android:gravity="start|top"
+        android:inputType="textCapWords"
+        android:minHeight="48dp"
+     app:endIconTint="@color/blue"
                 app:hintTextColor="@color/blue"
-                app:startIconDrawable="@drawable/phone"
-                app:startIconTint="@color/blue">
+          app:startIconDrawable="@drawable/phone"
+                app:startIconTint="@color/blue"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/country_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:inputType="text"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"
-                android:hint="Mobile Number"
-                android:textColorHint="@color/blue"
-                app:boxStrokeColor="@color/blue"
-                  app:boxStrokeWidth="2dp"
-                app:boxStrokeWidthFocused="2dp"
-                app:endIconTint="@color/blue"
+   <EditText
+                                     android:id="@+id/mobile_number"
+        android:layout_width="254dp"
+        android:layout_height="44dp"
+        android:ems="10"
+                       android:hint="Mobile Number"
+        android:gravity="start|top"
+        android:inputType="textCapWords"
+        android:minHeight="48dp"
+     app:endIconTint="@color/blue"
                 app:hintTextColor="@color/blue"
-                >
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/mobile_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="57dp"
-                    android:inputType="text"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
+        tools:ignore="SpeakableTextPresentCheck" />
+
             </LinearLayout>
 
 
