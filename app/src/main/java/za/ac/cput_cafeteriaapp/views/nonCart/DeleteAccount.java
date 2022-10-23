@@ -59,8 +59,7 @@ public class DeleteAccount extends AppCompatActivity {
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
 
-        EditText email = findViewById(R.id.deleteEmail);
-        EditText password = findViewById(R.id.deletePassword);
+
         progressBar = findViewById(R.id.progressBar);
 
 
