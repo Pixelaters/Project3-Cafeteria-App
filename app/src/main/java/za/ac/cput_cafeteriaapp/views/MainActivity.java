@@ -24,6 +24,7 @@ import java.util.List;
 import za.ac.cput_cafeteriaapp.R;
 import za.ac.cput_cafeteriaapp.models.CartItem;
 import za.ac.cput_cafeteriaapp.viewmodels.ShopViewModel;
+import za.ac.cput_cafeteriaapp.views.nonCart.DeleteAccount;
 import za.ac.cput_cafeteriaapp.views.nonCart.Homepage;
 import za.ac.cput_cafeteriaapp.views.nonCart.RateUsPage;
 import za.ac.cput_cafeteriaapp.views.nonCart.UserSettings;
