@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import za.ac.cput_cafeteriaapp.R;
+import za.ac.cput_cafeteriaapp.views.ProductDetailFragment;
 
 public class CheckoutPage extends AppCompatActivity {
 
@@ -83,7 +84,7 @@ public class CheckoutPage extends AppCompatActivity {
                     alertBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent inten = new Intent(CheckoutPage.this, Homepage.class);
+                            Intent inten = new Intent(CheckoutPage.this, ProductDetailFragment.class);
                             startActivity(inten);
                             Toast.makeText(CheckoutPage.this, "Thank you for the purchase", Toast.LENGTH_LONG).show();
 
