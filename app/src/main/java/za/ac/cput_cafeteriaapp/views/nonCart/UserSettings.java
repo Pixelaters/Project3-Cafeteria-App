@@ -1,9 +1,12 @@
 package za.ac.cput_cafeteriaapp.views.nonCart;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,10 +39,22 @@ public class UserSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_settings);
 
-        final EditText name = findViewById(R.id.nameUpdate);
+        // Define ActionBar object
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        // Define ColorDrawable object and parse color
+        // using parseColor method
+        // with color hash code as its parameter
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#22378d"));
+
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+
+
         
         btnSave = findViewById(R.id.detailsUpdate);
-        btnChange = findViewById(R.id.passwordChange);
         btnDelete = findViewById(R.id.deleteAccount);
 
 
@@ -52,13 +67,7 @@ public class UserSettings extends AppCompatActivity {
         });
 
 
-        btnChange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent change = new Intent(UserSettings.this, UpdatePassword.class);
-                startActivity(change);
-            }
-        });
+
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override

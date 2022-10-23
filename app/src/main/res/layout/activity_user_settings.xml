@@ -44,22 +44,6 @@
         android:layout_marginBottom="157dp"
         android:text="Save Changes" />
 
-    <Button
-        android:id="@+id/passwordChange"
-        android:layout_width="338dp"
-        android:layout_height="76dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="267dp"
-        android:text="Update Password" />
-
-    <EditText
-        android:id="@+id/nameUpdate"
-        android:layout_width="332dp"
-        android:layout_height="59dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="418dp"
-        android:hint="Please enter your username" />
-
     <TextView
         android:id="@+id/textView15"
         android:layout_width="357dp"
