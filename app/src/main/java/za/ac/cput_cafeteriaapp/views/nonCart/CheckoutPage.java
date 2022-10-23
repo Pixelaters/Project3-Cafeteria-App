@@ -1,6 +1,7 @@
 package za.ac.cput_cafeteriaapp.views.nonCart;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -78,10 +79,12 @@ public class CheckoutPage extends AppCompatActivity {
 
                     );
 
+
                     alertBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
+                            Intent inten = new Intent(CheckoutPage.this, Homepage.class);
+                            startActivity(inten);
                             Toast.makeText(CheckoutPage.this, "Thank you for the purchase", Toast.LENGTH_LONG).show();
 
                         }
