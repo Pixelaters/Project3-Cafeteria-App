@@ -53,8 +53,7 @@ public class UserSettings extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
 
 
-        
-        btnSave = findViewById(R.id.detailsUpdate);
+
         btnDelete = findViewById(R.id.deleteAccount);
 
 
